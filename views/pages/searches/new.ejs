@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header>
+    </header>
+    <div class="mobile-container">
+
+        <div class="topnav">
+
+            <a href="#home" class="active">Best Books!</a>
+            <h3 id="searchFor">Search By Title Or author</h3>
+
+            <div id="formDiv">
+
+                <form action="/searches/new" method="post">
+                    <label>
+                        <input class="forAll" id="bookTextField" type="text" placeholder="book" name="bookName"  />
+                    </label>
+
+                    <br>
+                    <br>
+                    <label class="titleLab" for="title">
+                        By title
+                        <input id="titleRadio" type="radio" id="title" value="title" name="by" />
+                    </label>
+                    <br>
+                    <br>
+                    <label class="titleLab" for="author">
+                        By Author
+                        <input  type="radio" id="author" value="author" name="by" />
+                    </label>
+                    <br>
+                    <br>
+                    <button id="but" class="forAll">Search the Google Books API </button>
+
+                </form>
+            </div>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("formDiv");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
