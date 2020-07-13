@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>show page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style/show.css">
+    <link rel="stylesheet" href="/style/style.css">
 </head>
 
 <body>
@@ -21,6 +21,60 @@
                 <a href="#home" class="active">Best Books!</a>
                 <h3 id="searchForResult">Search result</h3>
 
+                <div id="searchDiv">
+                    <a href="/">Home</a>
+                    <a href="/searches/new">Search By Title Or Author</a>
+                </div>
+
+                <div id="data">
+
+                    <%  savedBookKey.forEach(item=>{ %>
+
+
+                        <img src="<%= item.img %>">
+                        <br>
+
+                        <h3>
+                            <%= item.title %>
+                        </h3>
+                        <br>
+                        <p>
+
+                            <%= item.authors %>
+                        </p>
+                        <br>
+                        <p>
+                            <%= item.description %>
+                        </p>
+
+                        <button type="submit" class="myBut" onclick="myButtonFunction()">Select This Book</button>
+
+                        <div class="mybutclass">
+
+                            <form action="/showAddForm" method="post">
+                                <input type="text" name="img" value="<%= item.img %>">
+                                <br>
+                                <input type="text" name="title" value="<%= item.title %>">
+                                <br>
+                                <input type="text" name="authors" value="<%= item.authors %>">
+                                <br>
+                                <input type="text" name="isbn" value="<%= item.isbn %>">
+                                <br>
+                                <textarea name="description" id="" cols="30" rows="10" value="<%= item.description %>"></textarea>
+                                <br>
+                                <label for="">Enter a BookShelf Number</label>
+                                <br>
+                                <input type="text">
+                                <br>
+                                <button type="submit">Add To DataBase</button>
+                            </form>
+
+                        </div>
+                        <hr>
+
+                        <%     }); %>
+                </div>
+
 
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
@@ -28,38 +82,22 @@
             </div>
         </div>
 
-        <div id="data">
-
-            <%  savedBookKey.forEach(item=>{ %>
-
-                <img src="<%= item.img %>">
-                <br>
-
-                <h3>
-                    <%= item.title %>
-                </h3>
-                <br>
-                <p>
-
-                    <%= item.authors %>
-                </p>
-                <br>
-                <p>
-                    <%= item.description %>
-                </p>
-
-                <%     }); %>
-                    <hr>
-        </div>
-
-
     </main>
     <footer>
 
     </footer>
     <script>
         function myFunction() {
-            var x = document.getElementById("formDiv");
+            var x = document.getElementById("searchDiv");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        function myButtonFunction() {
+            var x = document.querySelector(".mybutclass");
             if (x.style.display === "block") {
                 x.style.display = "none";
             } else {

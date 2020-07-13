@@ -24,30 +24,25 @@
 
             </div>
             <div id="data">
-                <% resultsKey.forEach(item=>{  %>
-                    <p>
-                        <img src="<%= item.img %>">
-                    </p>
-                    <p>
-                        <%= item.title %>
-                    </p>
-                    <p>
-                        <%= item.authors %>
-                    </p>
-                    <p>
-                        <%= item.description %>
-                    </p>
-                    <p>
-                        <%= item.isbn %>
-                    </p>
-                    <a href="/books/<%=item.id%>"> View Details</a>
-                    <button type="submit">UPDATE</button>
-                    <br>
-                    <br>
-                    <button type="submit">DELETE</button>
-
-
-                    <%  }) %>
+                <p>
+                    <img src="<%= resultsKey.img %>">
+                </p>
+                <p>
+                    <%= resultsKey.title %>
+                </p>
+                <p>
+                    <%= resultsKey.authors %>
+                </p>
+                <p>
+                    <%= resultsKey.description %>
+                </p>
+                <p>
+                    <%= resultsKey.isbn %>
+                </p>
+                <button type="submit">UPDATE</button>
+                <br>
+                <br>
+                <button type="submit">DELETE</button>
 
             </div>
 
