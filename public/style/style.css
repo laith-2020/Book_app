@@ -32,8 +32,19 @@ body {
         position: relative;
     }
     .topnav #formDiv {
+        /* display: none; */
+        text-align: center;
+    }
+    #ankerDiv {
         display: none;
         text-align: center;
+    }
+    #searchDiv {
+        display: none;
+        text-align: center;
+    }
+    .mybutclass {
+        display: none;
     }
     .topnav a {
         color: white;
@@ -63,10 +74,6 @@ body {
     #searchForResult {
         text-align: center;
     }
-    /* #bookTextField {
-    height: 30px;
-    width: 50%;
-} */
     .titleLab {
         background-color: blanchedalmond;
         width: 50%;
@@ -85,7 +92,7 @@ body {
         color: white;
     }
     #data {
-        border-radius: 2px solid;
+        /* border-radius: 2px solid; */
         text-align: center;
     }
 }
