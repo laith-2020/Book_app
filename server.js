@@ -6,8 +6,11 @@ const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
 const cors = require('cors');
+const methodOverride = require('method-override');
 const server = express();
+const PORT = process.env.PORT || 3000;
 server.use(cors());
+server.use(methodOverride('_method'));
 
 server.use(express.static('./public'));
 server.set('view engine', 'ejs');
@@ -22,6 +25,8 @@ server.get('/books/:book_id', getOneId);
 server.get('/', getBooks);
 server.post('/showForm', showForm);
 server.post('/showAddForm', AddToDB);
+server.put('/updateData/:book_id', updateFunction);
+server.delete('/deleteData/:book_id', deleteFunction);
 
 function getOneId(req, res) {
     let SQL = `SELECT * FROM books WHERE id=$1;`;
@@ -63,7 +68,26 @@ function AddToDB(req, res) {
             res.redirect('/');
         })
 
+}
 
+function updateFunction(req, res) {
+    let { img, title, authors, description, isbn } = req.body;
+    let SQL = `UPDATE  books SET img=$1,title=$2,authors=$3,description=$4,isbn=$5 WHERE id=$6;`;
+    let id = req.params.book_id;
+    let values = [img, title, authors, description, isbn, id];
+    client.query(SQL, values)
+        .then(() => {
+            res.redirect(`/books/${id}`);
+        })
+}
+
+function deleteFunction(req, res) {
+    let SQL = ` DELETE FROM books WHERE id=$1;`;
+    let values = [req.params.book_id];
+    client.query(SQL, values)
+        .then(() => {
+            res.redirect('/');
+        })
 }
 
 server.get('/', (req, res) => {
@@ -112,12 +136,10 @@ function Book(bookData) {
     this.title = bookData.volumeInfo.title;
     this.authors = bookData.volumeInfo.authors;
     this.description = bookData.volumeInfo.description;
-    this.isbn = bookData.volumeInfo.industryIdentifiers;
+    this.isbn = bookData.volumeInfo.industryIdentifiers && bookData.volumeInfo.industryIdentifiers[0].identifier;
 }
 
 
-
-const PORT = process.env.PORT;
 
 server.get('*', (req, res) => {
     res.render('pages/error');

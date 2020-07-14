@@ -18,7 +18,11 @@
 
             <a href="#home" class="active">Best Books!</a>
             <h3 id="searchFor">Saved Books</h3>
-            <div id="ankerDiv">
+
+            <a href="javascript:void(0);" class="icon" onclick="showMenu()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="showMenu">
                 <a href="/">Home</a>
                 <a href="/searches/new">Search By Title Or Author</a>
 
@@ -41,31 +45,50 @@
                         <%= item.isbn %>
                     </p>
                     <a href="/books/<%=item.id%>"> View Details</a>
-                    <button type="submit">UPDATE</button>
                     <br>
                     <br>
-                    <button type="submit">DELETE</button>
 
+                    <button class="updateBtn">UPDATE DETAILS</button>
+
+                    <section class="updateForm">
+                        <form action="/updateData/<%=item.id%>?_method=put" method="post">
+                            <input type="text" name="img" value="<%= item.img %>">
+                            <br>
+                            <input type="text" name="title" value="<%= item.title %>">
+                            <br>
+                            <input type="text" name="authors" value="<%= item.authors %>">
+                            <br>
+                            <input type="text" name="isbn" value="<%= item.isbn %>">
+                            <br>
+                            <textarea name="description" id="" cols="30" rows="10">
+                                <%= item.description %>
+                            </textarea>
+                            <br>
+                            <label for="">Enter a BookShelf Number</label>
+                            <br>
+                            <input type="text">
+                            <br>
+                            <br>
+                            <button>UPDATE BOOK </button>
+                        </form>
+
+                    </section>
+                    <br>
+                    <br>
+
+                    <form action="/deleteData/<%= item.id%>?_method=delete" method="post">
+                        <button type="submit">DELETE BOOK </button>
+
+                    </form>
 
                     <%  }) %>
 
             </div>
 
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
         </div>
     </div>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("ankerDiv");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/app.js"></script>
 </body>
 
 </html>

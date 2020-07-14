@@ -18,8 +18,10 @@
 
             <a href="#home" class="active">Best Books!</a>
             <h3 id="searchFor">Search By Title Or author</h3>
-
-            <div id="formDiv">
+            <a href="javascript:void(0);" class="icon" onclick="showSearchForm()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="showSearchForm">
 
                 <form action="/searches" method="post">
                     <label>
@@ -44,21 +46,12 @@
 
                 </form>
             </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+
         </div>
     </div>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("formDiv");
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/app.js"></script>
 </body>
 
 </html>
