@@ -35,15 +35,19 @@ body {
         /* display: none; */
         text-align: center;
     }
-    #ankerDiv {
+    #showMenu {
         display: none;
         text-align: center;
     }
-    #searchDiv {
-        display: none;
+    #showSearchForm {
+        /* display: none; */
         text-align: center;
     }
     .mybutclass {
+        display: none;
+        /* visibility: hidden; */
+    }
+    .updateForm {
         display: none;
     }
     .topnav a {

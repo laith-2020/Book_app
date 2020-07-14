@@ -18,7 +18,10 @@
 
             <a href="#home" class="active">Best Books!</a>
             <h3 id="searchFor">Saved Books</h3>
-            <div id="ankerDiv">
+            <a href="javascript:void(0);" class="icon" onclick="showMenu()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div id="showMenu">
                 <a href="/">Home</a>
                 <a href="/searches/new">Search By Title Or Author</a>
 
@@ -46,12 +49,9 @@
 
             </div>
 
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
         </div>
     </div>
-    <script>
+    <!-- <script>
         function myFunction() {
             var x = document.getElementById("ankerDiv");
             if (x.style.display === "block") {
@@ -60,7 +60,9 @@
                 x.style.display = "block";
             }
         }
-    </script>
+    </script> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="/app.js"></script>
 </body>
 
 </html>
