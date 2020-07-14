@@ -45,7 +45,6 @@ body {
     }
     .mybutclass {
         display: none;
-        /* visibility: hidden; */
     }
     .updateForm {
         display: none;
