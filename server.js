@@ -15,7 +15,7 @@ server.use(methodOverride('_method'));
 server.use(express.static('./public'));
 server.set('view engine', 'ejs');
 
-const client = new pg.Client(process.env.DB_URL);
+const client = new pg.Client(process.env.DATABASE_URL);
 
 //middleware to render and use the ejs
 server.use(express.json());
